@@ -27,6 +27,7 @@ Diff ← -⌵
   FixMidnight       ← ≡(⍜↘₁ (⍜▽ ⋅(□"23:59") ⊸≡≍ □"0:00"))
   MergeIntervals    ← ⊂ ⊓↘₋₁ ↘₁
   MergeSuccessive   ← ↯ ∞_2 /(⨬(MergeIntervals|⊂) >2 Diff ∩Clock!(Minutes Parse) ◡⊓⊡₋₁⊡₀)
+  Convert           ← MergeSuccessive FixMidnight≡₀⍚String~Trim OnlyRelevantCols DiscardNotWorking ToTable &fras FileName
   PrependDate       ← ≡˜⊂ ⊙(□$"_-_-_" ⊡ 0 datetime now°⊟ NormalizeNumbers)
   ToString          ← /$"_\n_" ⍚/$"_\t_"
   GetReady          ← ⊸°&clip ToString PrependDate
@@ -34,14 +35,6 @@ Diff ← -⌵
 
 DaySeries!(
   New 6 2
-  ⊸(
-    &fras FileName
-    ToTable
-    DiscardNotWorking
-    OnlyRelevantCols
-    ≡₀⍚String~Trim
-    FixMidnight
-    MergeSuccessive
-  )
+  ⊸Convert
   GetReady
 )
