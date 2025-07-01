@@ -1,9 +1,5 @@
 # Experimental!
 
-Month ← "06"
-Days  ← ≡(⬚⌞@0 ↯ [2] °⋕) +1 ⇡ 31
-Files ← ≡($"./data/_-_.txt" Month) Days
-
 Diff ← -⌵
 
 ┌─╴String
@@ -44,12 +40,10 @@ Diff ← -⌵
   GetReady           ← ⊸°&clip ToString
 └─╴
 
-# DaySeries!(
-#   New 6 2
-#   ⊸Convert
-#   GetReady
-# )
-⍚DaySeries!(⊸Convert New 6) +1 ⇡ 7
+Month          ← 6
+FirstDayOfWeek ← 29
+
+⍚DaySeries!(⊸Convert New Month) + FirstDayOfWeek ⇡ 7
 DaySeries!(
   DiscardNonExistent
   /◇⊂
