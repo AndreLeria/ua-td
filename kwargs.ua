@@ -33,10 +33,12 @@ Extract‼‼ ← (
   |Invalid
   |Month {Month}
   |Day {Day}
+  |StopAtDay {Stop}
 
   Extract‼     ← Extract‼‼(^0|^1|None|Invalid)
   ExtractMonth ← Extract‼(Month|"--month")
   ExtractDay   ← Extract‼(Day|"--day")
+  ExtractStop  ← Extract‼(StopAtDay|"--stop-at-day")
 
   IsNil ← ↥ ⊃(≍ None|≍ Invalid)
 
@@ -49,9 +51,10 @@ Extract‼‼ ← (
   )
 └─╴
 
-KwArg!(⊃(ExtractMonth|ExtractDay) Args)
+KwArg!(⊃(ExtractMonth|ExtractDay|ExtractStop) Args)
 KwMonth ←
 KwDay   ←
+KwStop  ←
 
 KwArg!(
   $Month Require!Month KwMonth "--month"
@@ -63,3 +66,5 @@ KwArg!(
 
 Day   ←
 Month ←
+
+DayInterval ← ⍣(+1 -Day⋕ °KwArg~StopAtDay|7) KwStop

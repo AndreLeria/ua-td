@@ -45,7 +45,7 @@ Diff ← -⌵
 Month          ← KwArgs~Month
 FirstDayOfWeek ← KwArgs~Day
 
-⍚DaySeries!(⊸Convert New Month) + FirstDayOfWeek ⇡ 7
+⍚DaySeries!(⊸Convert New Month) + FirstDayOfWeek ⇡ KwArgs~DayInterval
 DaySeries!(
   DiscardNonExistent
   /◇⊂
