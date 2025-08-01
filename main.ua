@@ -1,5 +1,7 @@
 # Experimental!
 
+KwArgs ~ "kwargs.ua"
+
 Diff ← -⌵
 
 ┌─╴String
@@ -40,8 +42,8 @@ Diff ← -⌵
   GetReady           ← ⊸°&clip ToString
 └─╴
 
-Month          ← 6
-FirstDayOfWeek ← 29
+Month          ← KwArgs~Month
+FirstDayOfWeek ← KwArgs~Day
 
 ⍚DaySeries!(⊸Convert New Month) + FirstDayOfWeek ⇡ 7
 DaySeries!(
